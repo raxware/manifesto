@@ -1,0 +1,31 @@
+<div class="thingsFrame">
+    <div class="thingsHead"><div class="headTitle">Things list</div></div>
+
+<div class="things">
+    <ul>
+        <li *ngFor="let thing of myThingsList; index as i">
+            <button name="subject" type="button" value="thingDescription" (click)="thingIndexer(i)">{{thing.thingDescription}}</button>
+            <mat-icon aria-hidden="false" fontIcon="edit" (click)="thingIndexer(i)"></mat-icon> - 
+            <mat-icon aria-hidden="false" fontIcon="delete_forever"></mat-icon>
+        </li>
+        
+    </ul>
+</div>
+
+<!--
+
+div>
+    <ul>
+        <li *ngFor="let vacanca of vacances; index as i">
+            {{vacanca.nom}} - 
+            <mat-icon aria-hidden="false" fontIcon="edit" (click)="goToEdit(i)"></mat-icon> - 
+            <mat-icon aria-hidden="false" fontIcon="delete_forever" (click)="removeItem(i)"></mat-icon>
+        </li>
+    </ul>
+</div>
+
+<h2>Nova Vacança</h2>
+
+<app-vacanca-form [buttonName]="buttonName" (outVacanca)="saveVacanca($event)"></app-vacanca-form>
+
+-->

@@ -1,0 +1,21 @@
+
+<div class="formFrame">
+    <div class="formHead"><div class="headTitle">{{formHeadName}}</div></div>
+    <div class="form">
+        <form *ngIf="thingPrototype" [formGroup]="thingPrototype">
+
+            <label for="thingType">Type: </label><input class="dataField" id="thingType" type="text" formControlName="thingType" /><br><br>
+            <label for="quantity">Quantity: </label><input class="dataField"  id="quantity" type="text" formControlName="quantity" /><br><br>
+            <label for="thingDescription">Description: </label><input class="dataField" id="thingDescription" type="text" formControlName="thingDescription" /><br><br>
+            <label for="thingStatus">Conservation: </label><input class="dataField" id="thingStatus" type="text" formControlName="thingStatus" /><br><br>
+            <label for="onLoan">On loan: </label><input class="dataField" id="onLoan" type="checkbox" formControlName="onLoan" /><br><br>
+            <label for="borrowerName">Borrower name: </label><input class="dataField" id="borrowerName" type="text" formControlName="borrowerName" /><br><br>
+            <label for="loanDate">Loan Date: </label><input class="dataField" id= "loanDate" type="text" formControlName="loanDate" /><br><br>
+            <label for="defaulter">Past due: </label><input class="dataField" id="defaulter" type="checkbox" formControlName="defaulter" /><br><br>
+
+                <div class="saveForm"><button type="button" (click)=thingTagger()>{{buttonName}}</button></div>
+                <div class="clearForm"><button type="button" (click)=auxButtonEvent(auxButton)>{{auxButton}}</button></div>
+        </form>
+    </div>
+    
+</div>

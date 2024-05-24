@@ -1,0 +1,33 @@
+
+<app-header [title]="title"></app-header>
+
+<hr class="liner">
+
+<div class="menuBar">
+    <a [routerLink]="'/aboutus'" text-decoration="none">About Us</a> <!-- Es el texto que se muestra en la barra del "menu". El [routerLink] lo lleva a /aboutus  -->
+</div>
+
+<div class="formFrame">
+    <app-thing-form 
+        [formHeadName]="formHeadName" 
+        [auxButton]="auxButton" 
+        [buttonName]="buttonName" 
+        (outputtingThing)="saveThing($event)">
+    </app-thing-form>
+</div>
+
+<div class="thingsFrame">
+    <div class="thingsHead"><div class="headTitle">Things list</div></div>
+    <div class="things">
+        <ul>
+            <li *ngFor="let thing of myThingsList; index as i">
+                <div class="thingDescription">{{thing.thingDescription}}</div>
+                <div class="editIcon"><mat-icon aria-hidden="false" fontIcon="edit" (click)="thingIndexer(i)"></mat-icon></div>
+                <div class="deleteIcon"><mat-icon aria-hidden="false" fontIcon="delete_forever" (click)="removeItem(i)"></mat-icon></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--<app-edit></app-edit>-->
+
+

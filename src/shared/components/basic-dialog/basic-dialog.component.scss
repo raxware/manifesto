@@ -1,0 +1,37 @@
+.warningFullFrame{
+position: relative;
+border: solid 1px black;
+border-radius: 4px;
+width: 300px;
+height: 210px;
+margin-left: 0px;
+margin-top: 0px;
+margin-bottom: 0%;
+}
+.warningHead{
+opacity: 70%;
+position: absolute;
+background-color: #e9812d;
+border-radius: 3px;
+width: 300px;
+height: 50px;
+}
+.warningHeadTitle{
+//    background-color: aquamarine;
+position: absolute;
+text-align: center;
+font-size: 60px;
+width: 200px;
+height: 30px;
+margin-left: 50px;
+margin-top: -35px;
+}
+.warningBody{
+position: absolute;
+bottom: 27.5%;
+}
+.warningButtons{
+position: absolute;
+bottom: 5%;
+margin-left: 90px;
+}

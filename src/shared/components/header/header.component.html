@@ -1,0 +1,28 @@
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Updock|Comforter|Birthstone Bounce|Norican">
+  </head>
+  <div class="header">
+    <div class="left">
+      <div class="logoFrame">
+        <img class="logo" src="assets/logo.png" alt="M">
+      </div>
+      <div class="typography">{{ title }}
+        <div class="slogan">Keeping Things Trackable</div>
+      </div>    
+    </div>
+    <div class="right">
+      <div class="divider" role="separator" aria-label="Divider"></div>
+        <div class="features">
+          @for (item of [
+            { title: 'Start a brand new collection', id: 1, link: 'https://' },
+            { title: 'Create an inventory', id: 2, link: 'https://' },
+            { title: 'Are you moving? List your boxes content', id: 3, link: 'https://' },
+            { title: 'Organize your storage room', id: 4, link: 'https://' },
+            { title: 'Customize your catalogue of things', id: 5, link: 'https://' },
+          ]; track item.id) {
+          <a  class="feature" [href]="item.link" target="_blank" rel="noopener" text-decoration="none">
+            <span>{{ item.title }}</span>
+          </a>}
+        </div>
+    </div>
+  </div>
