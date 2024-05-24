@@ -8,6 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-//    @Input() title!: string
-  title = 'manifesto' //Define el 'título' del header //typography
+  title = 'manifesto' //Define el 'título' que se renderiza en el header //typography
 }

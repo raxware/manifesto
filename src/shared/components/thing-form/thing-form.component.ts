@@ -2,8 +2,6 @@ import { Component, EventEmitter, Input, Output, OnInit, inject } from '@angular
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup, Validators, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { itemData } from '../../../app/model/interfaces';
-import { SelectorMatcher } from '@angular/compiler';
-
 
 @Component({
   selector: 'app-thing-form',
@@ -17,7 +15,6 @@ export class ThingFormComponent {
   @Input () formHeadName!: string; @Input () buttonName!: string; @Input () auxButton!: string; 
 
   @Input () set thingUnit(thingToEdit: itemData){
-    console.log('PUNTO DE LLEGADA'); // POR QUÉ NO ENTRA AQUI?????????????????????????????????????????????????
     this.unit = thingToEdit;
     this.editFormFiller(thingToEdit);
   };
@@ -59,24 +56,14 @@ export class ThingFormComponent {
         defaulter: true,
       }
       this.outputtingThing.emit(yetTaggedThing);
-//      this.clearForm();
+      this.clearForm();
     }
     else {
         console.log('thingPrototype is INVALID!!!');
     }
   }
 
-  editFormFiller(thingToEdit: itemData){ 
-    this.thingPrototype.controls['thingType'].setValue(thingToEdit.thingType);
-    this.thingPrototype.controls['quantity'].setValue(thingToEdit.quantity);
-    this.thingPrototype.controls['thingDescription'].setValue(thingToEdit.thingDescription);
-    this.thingPrototype.controls['thingStatus'].setValue(thingToEdit.thingStatus);
-    this.thingPrototype.controls['onLoan'].setValue(thingToEdit.onLoan);
-    this.thingPrototype.controls['borrowerName'].setValue(thingToEdit.borrowerName);
-    this.thingPrototype.controls['loanDate'].setValue(thingToEdit.loanDate);
-    this.thingPrototype.controls['defaulter'].setValue(thingToEdit.defaulter);
-  }
-    /*
+  editFormFiller(thingToEdit: itemData){
     this.thingPrototype.patchValue({
       thingType: thingToEdit.thingType,
       quantity: thingToEdit.quantity,
@@ -87,13 +74,16 @@ export class ThingFormComponent {
       loanDate: thingToEdit.loanDate,
       defaulter: thingToEdit.defaulter
     })
-    */
-
-  auxButtonEvent(auxButtonName: string){
-    switch (auxButtonName){
-      case "Clear form": this.thingPrototype.reset(); break;
-      case  'Cancel': this.thingPrototype.reset(); break;
-    }
   }
-  
+
+    clearForm(){
+      this.thingPrototype.reset();
+    }
+    // Usar un @Output o un ViewChild() para recuperar el valor de auxButtonName y llamar a la función que le corresponda
+    /* auxButtonSelector(auxButtonName: string){
+      switch (auxButtonName){
+        case "Clear form": this.thingPrototype.reset(); break;
+        case  'Cancel': this.router.navigate(['/home']); break;
+      }
+    }*/
 }

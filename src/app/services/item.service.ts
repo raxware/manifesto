@@ -30,7 +30,7 @@ export class ItemService {
     const pickedThing = this.getThings();
     return pickedThing[index];
   }
-  thingKicker(index: number) {    // recibe parámetros de ... aún no definido, pero probablemente desde "my-things.c.ts"
+  thingKicker(index: number) {    // recibe parámetros de "home.c.ts"  --> removeItem(index: number){ ... thingKicker(index);
     const myThings = this.getThings();
     myThings.splice(index, 1);
     this.saveThings(myThings);

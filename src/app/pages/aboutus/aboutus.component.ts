@@ -12,5 +12,5 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './aboutus.component.scss'
 })
 export class AboutusComponent {
-  title = 'About Us' //No define el valor 'About Us' del header
+  title = 'About Us' //No confundir con el valor 'About Us' del header
 }
