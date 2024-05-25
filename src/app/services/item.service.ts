@@ -26,11 +26,11 @@ export class ItemService {
     myThings[index] = reDefinedThing;
     this.saveThings(myThings);
   }
-  thingPicker(index: number){     // recibe parámetros de "my-things.c.ts"  -->  thingIndexer(index: number){ ... thingPicker(index);}
+  thingPicker(index: number){     // recibe parámetros de "home.c.ts"  -->  thingIndexer(index: number){ ... thingPicker(index);}
     const pickedThing = this.getThings();
     return pickedThing[index];
   }
-  thingKicker(index: number) {    // recibe parámetros de ... aún no definido, pero probablemente desde "my-things.c.ts"
+  thingKicker(index: number) {    // recibe parámetros de "home.c.ts"  -->  removeItem(index: number) { ...  thingKicker(index);}
     const myThings = this.getThings();
     myThings.splice(index, 1);
     this.saveThings(myThings);

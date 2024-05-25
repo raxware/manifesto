@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { ItemService } from '../../services/item.service';
 import { itemData } from '../../model/interfaces';
 import { ThingFormComponent } from '../../../shared/components/thing-form/thing-form.component';
-import { MyThingsComponent } from '../my-things/my-things.component';
 import { EditComponent } from '../edit/edit.component';
 import { MatDialog } from '@angular/material/dialog';
 import { BasicDialogComponent } from '../../../shared/components/basic-dialog/basic-dialog.component';
@@ -18,7 +17,6 @@ import { MatIconModule } from '@angular/material/icon';
     [CommonModule, 
     HeaderComponent, 
     RouterModule, 
-    MyThingsComponent, 
     ThingFormComponent, 
     EditComponent, 
     MatIconModule
@@ -36,11 +34,8 @@ export class HomeComponent implements OnInit {
   buttonName = 'Save';  // Define el texto del botón del form "Add new things"
   auxButton = 'Clear form';  // Define el texto del botón del form "Add new things"
 
-  constructor(private router: Router,
-    public dialog: MatDialog
-  ) {
-    console.log('constructor');
-    this.title = 'Title'; //NO define el valor 'Home' del header
+  constructor(private router: Router,public dialog: MatDialog) {
+    this.title = 'Title'; //NO confundir con el literal 'Home' del header
   }
 
   ngOnInit(): void {

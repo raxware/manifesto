@@ -28,7 +28,7 @@ export class EditComponent implements OnInit{
     this.activatedRoute.params.subscribe(params => {
       this.index = params['id'];
       console.log('Al navegar al edit el index sigue siendo: ', this.index)
-      this.thingUnit = this.myThingsService.thingPicker(this.index); // recupera el "index" pasado por "this.router.navigate(['/edit', index]);" desde "my-Things.c.ts"
+      this.thingUnit = this.myThingsService.thingPicker(this.index); // recibe "index" pasado por "this.router.navigate(['/edit', index]);" desde "my-Things.c.ts"
       console.log('Y del servicio "thingPicker" obtiene: ', this.thingUnit)
       console.log('PUNTO DE SALTO');
     })
