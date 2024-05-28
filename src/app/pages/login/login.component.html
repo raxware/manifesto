@@ -1,11 +1,21 @@
 <form (ngSubmit)="login()" [formGroup]="credentials">
-    <div>
-        <input type="email" placeholder="Email" formControlName="email"/>
-    </div>
-    <div>
-        <input type="password" placeholder="Password" formControlName="password"/>
-    </div>
+    <span>
+        <input class="dataField" type="email" placeholder="Email" formControlName="email"/>
+    </span>
+    <br>
+    <br>
+    <span>
+        <input class="dataField" type="password" placeholder="Password" formControlName="password"/>
+    </span>
+    <br>
+    <br>
+    <span>
+        <button class="loginButton" type="submit" expand="block" [disabled]="!credentials.valid" >Log in</button>
+    </span>   
+    <br>
+    <span class="signinLine">
+        <label for="signinButton">New user?</label>
+    </span>
+    <button class="signinButton" type="button" expand="block" color="secondary" (click)="register()" >Sign in</button>
 
-    <button type="submit" expand="block" [disabled]="!credentials.valid">Log in</button>
-    <button type="button" expand="block" color="secondary" (click)="register()">Create account</button>
 </form>

@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BasicDialogComponent } from '../../../shared/components/basic-dialog/basic-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../../services/auth.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,8 @@ import { AuthService } from '../../services/auth.service';
     RouterModule, 
     ThingFormComponent, 
     EditComponent, 
-    MatIconModule
+    MatIconModule,
+    LoginComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -35,6 +37,8 @@ export class HomeComponent implements OnInit {
   formHeadName = 'Add a new thing'; // Define el texto de la cabecera  del form "Add a new thing" 
   buttonName = 'Save';  // Define el texto del botón del form "Add new things"
   auxButton = 'Clear form';  // Define el texto del botón del form "Add new things"
+  receivedEmail!: string;
+  userEmail: string = 'e-mail';
 
   constructor(private route: Router,public dialog: MatDialog) {
     this.title = 'Title'; //NO confundir con el literal 'Home' del header
@@ -46,7 +50,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit', this.title);
     this.getThings();
   }
   getThings() {
@@ -57,9 +60,7 @@ export class HomeComponent implements OnInit {
     this.getThings();
   }
   thingIndexer(index: number) {
-    console.log('El item elegido tiene posición:', index);
     const selectedThing = this.myThingsService.thingPicker(index);
-    console.log('El item elegido fue:', selectedThing);
     this.route.navigate(['/private/edit', index]);
   }
 
@@ -68,7 +69,7 @@ export class HomeComponent implements OnInit {
       data: {message: 'Are you sure you want to delete this thing for ever?'},
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+      //console.log('The dialog was closed', result);
       if(result) {
         this.myThingsService.thingKicker(index);
         this.getThings();
@@ -76,6 +77,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  userWatch(receivedEmail: string){
+    console.log('receivedEmail: ', receivedEmail);
+    this.userEmail = receivedEmail;
+    console.log('userEmail: ', this.userEmail);
+  }
 
 /*
 */

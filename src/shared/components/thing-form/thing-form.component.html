@@ -14,9 +14,8 @@
             <label for="defaulter">Past due: </label><input class="dataField" id="defaulter" type="checkbox" formControlName="defaulter" /><br><br>
 
                 <div class="saveForm"><button type="button" (click)=thingTagger()>{{buttonName}}</button></div>
-                <div class="clearForm"><button type="button" (click)=clearForm()>{{auxButton}}</button></div>
-                <!--<div class="clearForm"><button type="button" (click)=auxButtonSelector(auxButton)>{{auxButton}}</button></div>-->
+                <div class="clearForm"><button type="button" (click)=auxButtonSelector(auxButton)>{{auxButton}}</button></div>
+                <!-- FUNCIONA!!! auxButtonSelector(auxButton) no pasa string literal, sino el valor variable de {{auxButton}} -->
         </form>
     </div>
-    
 </div>

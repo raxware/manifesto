@@ -5,7 +5,9 @@
 
 <div class="menuBar">
     <a [routerLink]="'/private/aboutus'" text-decoration="none">About Us</a>
+    <span class="userCredential" >{{userEmail}}</span>
     <span class="logOut" (click)="logout()">LOGOUT</span>
+
 </div>
 
 <div class="formFrame">

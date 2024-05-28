@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -10,8 +10,11 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
+
 export class LoginComponent {
   credentials!: FormGroup;
+
+  @Output () outputtingUserEmail = new EventEmitter<string>();
 
   constructor(
     private fb: FormBuilder,
@@ -44,6 +47,7 @@ export class LoginComponent {
     } else {
       console.log('Registration failed', 'Please try again!');
     }
+    this.userWitness(this.credentials);
   }
 
   async login() {
@@ -51,11 +55,17 @@ export class LoginComponent {
     const user = await this.authService.login(this.credentials.value);
 
     if (user) {
-      console.log('User', user);
       this.router.navigateByUrl('/private/home', { replaceUrl: true });
     } else {
       console.log('Login failed', 'Please try again!');
     }
+    this.userWitness(this.credentials);
+  }
+
+  userWitness(credentials: any){
+    const userEmail = credentials.value.email;
+    this.outputtingUserEmail.emit(userEmail);
+    console.log('valor emitido: ', userEmail);
   }
 
 }

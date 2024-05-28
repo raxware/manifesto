@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output, OnInit, inject } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormControl, FormGroup, Validators, SelectMultipleControlValueAccessor } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { itemData } from '../../../app/model/interfaces';
-import { SelectorMatcher } from '@angular/compiler';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-thing-form',
@@ -16,7 +16,6 @@ export class ThingFormComponent {
   @Input () formHeadName!: string; @Input () buttonName!: string; @Input () auxButton!: string; 
 
   @Input () set thingUnit(thingToEdit: itemData){
-    console.log('PUNTO DE LLEGADA');
     this.unit = thingToEdit;
     this.editFormFiller(thingToEdit);
   };
@@ -24,11 +23,12 @@ export class ThingFormComponent {
     return this.unit;
   }
   @Output() outputtingThing = new EventEmitter<itemData>();
+  @Output () outputtingAuxButton = new EventEmitter<string>();
  
   thingPrototype!: FormGroup;
   unit!: itemData;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute, private route: Router) {
   this.emptyFormBuilder();
   }
 
@@ -57,7 +57,7 @@ export class ThingFormComponent {
         defaulter: true,
       }
       this.outputtingThing.emit(yetTaggedThing);
-      this.clearForm();
+      this.auxButtonSelector(this.auxButton);
     }
     else {
         console.log('thingPrototype is INVALID!!!');
@@ -75,13 +75,11 @@ export class ThingFormComponent {
       defaulter: thingToEdit.defaulter
     })
   }
-  clearForm(){
-    this.thingPrototype.reset();
-  }
-  /*auxButtonSelector(auxButtonName: string){
+
+  auxButtonSelector(auxButtonName: string){
     switch (auxButtonName){
-      case "Clear form": this.thingPrototype.reset(); break;
-      case  'Cancel':    this.router.navigate(['/private/home']); break;
+      case "Clear form": this.thingPrototype.reset(); console.log('auxButtonSelector: CLEAR FUNCIONA!!!'); break;
+      case  'Cancel':    this.route.navigate(['/private/home']); console.log('auxButtonSelector: CANCEL FUNCIONA!!!'); break;
     }
-  }*/  // implementar con Output o con viewChild()
+  }
 }
