@@ -1,0 +1,11 @@
+<form (ngSubmit)="login()" [formGroup]="credentials">
+    <div>
+        <input type="email" placeholder="Email" formControlName="email"/>
+    </div>
+    <div>
+        <input type="password" placeholder="Password" formControlName="password"/>
+    </div>
+
+    <button type="submit" expand="block" [disabled]="!credentials.valid">Log in</button>
+    <button type="button" expand="block" color="secondary" (click)="register()">Create account</button>
+</form>

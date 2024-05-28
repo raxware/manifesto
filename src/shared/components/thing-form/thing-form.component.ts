@@ -81,7 +81,7 @@ export class ThingFormComponent {
   /*auxButtonSelector(auxButtonName: string){
     switch (auxButtonName){
       case "Clear form": this.thingPrototype.reset(); break;
-      case  'Cancel':    this.router.navigate(['/home']); break;
+      case  'Cancel':    this.router.navigate(['/private/home']); break;
     }
   }*/  // implementar con Output o con viewChild()
 }

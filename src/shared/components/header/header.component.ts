@@ -9,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   title = 'manifesto' //Define el 'título' en header //typography
+
 }

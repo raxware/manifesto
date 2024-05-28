@@ -41,7 +41,7 @@ export class EditComponent implements OnInit{
   }
 
   abortEdition(_value?: any){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/private/home']);
   }
 }
 

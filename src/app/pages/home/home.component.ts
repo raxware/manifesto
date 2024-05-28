@@ -9,6 +9,7 @@ import { EditComponent } from '../edit/edit.component';
 import { MatDialog } from '@angular/material/dialog';
 import { BasicDialogComponent } from '../../../shared/components/basic-dialog/basic-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -28,14 +29,20 @@ import { MatIconModule } from '@angular/material/icon';
 export class HomeComponent implements OnInit {
 
   myThingsService = inject(ItemService);
+  authService = inject(AuthService);
   title;
   myThingsList: itemData[] = [];
   formHeadName = 'Add a new thing'; // Define el texto de la cabecera  del form "Add a new thing" 
   buttonName = 'Save';  // Define el texto del botón del form "Add new things"
   auxButton = 'Clear form';  // Define el texto del botón del form "Add new things"
 
-  constructor(private router: Router,public dialog: MatDialog) {
+  constructor(private route: Router,public dialog: MatDialog) {
     this.title = 'Title'; //NO confundir con el literal 'Home' del header
+  }
+  logout() {
+    this.authService.logout().then(() => {
+      this.route.navigate(['login']);
+    })
   }
 
   ngOnInit(): void {
@@ -53,7 +60,7 @@ export class HomeComponent implements OnInit {
     console.log('El item elegido tiene posición:', index);
     const selectedThing = this.myThingsService.thingPicker(index);
     console.log('El item elegido fue:', selectedThing);
-    this.router.navigate(['/edit', index]);
+    this.route.navigate(['/private/edit', index]);
   }
 
   removeItem(index: number) {
